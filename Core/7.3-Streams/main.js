@@ -10,19 +10,19 @@ var fs = require("fs");
 var zlib = require('zlib');
 
 // Se comprime input.txt en input.zip
-fs.createReadStream('input.txt')
-  .pipe(zlib.createGzip())
-  .pipe(fs.createWriteStream('input.zip'));
+//fs.createReadStream('input.txt')
+  //.pipe(zlib.createGzip())
+  //.pipe(fs.createWriteStream('input.zip'));
 
-console.log("Archivo Comprimido.");
+//console.log("Archivo Comprimido.");
 
 // Todo: Intente descomprimir el archivo utilizando el siguiente codigo.
 // Ejercicio
 
-/* Habilitar despues de comprimir...
-fs.createReadStream('input.txt.gz')
+//Habilitar despues de comprimir...
+fs.createReadStream('input.txt')
   .pipe(zlib.createGunzip())
   .pipe(fs.createWriteStream('input2.txt'));
 
 console.log("Archivo Descomprimido");
-*/
+//*/
