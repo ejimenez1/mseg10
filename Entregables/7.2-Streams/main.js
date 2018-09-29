@@ -15,18 +15,11 @@
 // Salvar el pipe TODO.
 // Ejericio: trate de salvar el texto en un nuevo archivo
 
+var fs = require("fs");
 
-
-var concat = require('concat-files');
-
-concat([
-  'a-wing.txt',
-  'j-type-327.txt'
-], 'prueba.txt', function(err) {
-  if (err) throw err
-  console.log('done');
-});
-
-
-// fin de codigo
-console.log("Program Ended");
+var readerStream1 = fs.createReadStream('a-wing.txt');
+var readerStream2 = fs.createReadStream('j-type-327.txt');
+console.log("Saved with pipe");
+var EndFile = fs.createWriteStream('Pipe.txt');
+readerStream1.pipe(EndFile);
+readerStream2.pipe(EndFile);
