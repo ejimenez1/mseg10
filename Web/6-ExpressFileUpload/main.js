@@ -25,7 +25,19 @@ app.post('/file_upload',  function (req, res) {
   // https://www.npmjs.com/package/express-fileupload
   // Ponga su codigo aqui
 
+  //console.log(req.files['archivo'];
+    if (!req.files['archivo'])
+      return res.status(400).send('No files were uploaded.');
 
+  let sampleFile = req.files['archivo'];
+    sampleFile.mv(__dirname + '/file_test.jpg', function(err) {
+      if (err)
+        return res.status(500).send(err);
+
+      res.send('File uploaded!');
+    });
+
+  });
 
 });
 

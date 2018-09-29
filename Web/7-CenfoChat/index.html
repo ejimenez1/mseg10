@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Chat Socket.IO Cenfotec</title>
+    <title>Socket.IO Cenfotec MSEG10</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -22,23 +22,17 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-
       $(function () {
         var socket = io();
-
-        // emite evento al servidor
         $('form').submit(function(){
-
-          // EMITIR EL MENSAJE DEL INPUT M
-
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
           return false;
         });
-
-        // Escucha el server
-        // ESCUCHAR EL EVENTO "Chat Message"
-        // IMPRIMIR EN PANTALLA EL MENSAJE DEL SERVER
-        // ejemplo: $('#messages').append($('<li>').text(AQUI_VA_EL_MENSAJE));
-
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
       });
     </script>
   </body>
